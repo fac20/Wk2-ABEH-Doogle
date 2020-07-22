@@ -1,0 +1,46 @@
+/* ----- Search Result Display ----- */
+
+article {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;    
+}
+
+.dog-pic-2 {
+    order: 1;
+}
+.dog-pic-3 {
+    order: 3;
+}
+.dog-pic-4 {
+    order: 5;
+}
+
+.temperament {
+    order: 2;    
+}
+.typical-characteristics {
+    order: 4;
+}
+
+.loading-div {
+    margin: auto;
+    align-items: center;
+    text-align: center;
+}
+
+.loading-image {
+    width: 80vw;
+    margin: 5vw;
+
+}
+.dog-pics {
+    width: 95vw;
+}
+
+.characteristics {
+    display: inline;
+}
+.characteristics b{
+    text-transform: capitalize;
+}
