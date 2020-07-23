@@ -6,8 +6,11 @@
     --font-size-title: 2rem;
     --font-size-headings: 1.8rem;
     --font-size-text: 0.9rem;
-}
 
+    --purple: hsl(263,60%,48%);
+    --light-purple: hsl(239,53%,59%);
+    --light-blue: hsl(213,64%,59%);
+}
 
 html {
     box-sizing: border-box;
@@ -16,20 +19,23 @@ html {
 body {
     margin: auto;
     font-family: 'Poppins', sans-serif;
+    cursor: url(https://img.icons8.com/ultraviolet/40/000000/dog-bone.png), auto;
 }
 
-h1 {
+/* h1 {
     font-size: 3.5rem;
     font-weight: var(--font-weight-title);
-}
+} */
 
 h2 {
     padding: 1rem;
+    color: var(--light-purple);
 }
 
 h3 {
     padding-left: 2rem;
     padding-right: 2rem;
+    color: var(--light-blue);
 }
 
 h2, h3 {
@@ -137,13 +143,13 @@ input {
 
 /* Submit button */
 button {
+    font-weight: var(--font-weight-headings);
     height: 50px;
     box-shadow: inset 0px 0px 0px 0px #ffffff;
     background: hsl(226, 61%, 63%);
     border-radius: 6px;
     border: 1px solid hsl(226, 1%, 94%);
     display: inline-block;
-    cursor: pointer;
     color: hsl(226, 0%, 100%);
     font-size: var(--font-size-text);
     padding: 6px 24px;
@@ -158,8 +164,9 @@ button:hover {
 }
 button:active {
     position: relative;
-    top: 1px;
+    top: 4px;
 }
+
 
 /* HR line */
 
