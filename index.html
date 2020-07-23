@@ -7,29 +7,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- CSS Link -->
-        <link rel="stylesheet" href="/style.css">
-
-        <!-- Fonts & Icons -->        
+        <link rel="stylesheet" type="text/css" href="style.css">      
 
     </head>
 
     <body>
         <header>
-            <img src="" alt="Doogle Icon">
-            <h1>Doogle</h1>
-        </header>
-
+            <img class="doogle-icon" src="https://img.icons8.com/ultraviolet/40/000000/dog-park.png" alt="Doogle Icon">
+            <h1><img class="doogle-logo" src="images/doogle_logo.png" alt="Doogle logo"></h1>
+        </header>    
         <form action="" id="inputForm">
-            <input type="search" id="inputText" name="doogle" placeholder="doogle your dog breed here" required/>
-            <button type="submit" id="fetchBtn">Fetch</button>
+                <input type="search" id="inputText" name="doogle" placeholder="" required/>
+                <button type="submit" id="fetchBtn">Fetch</button>
         </form>  
-        <hr>
-        
-        <main>
+
+        <hr class="hidden">
+
+        <div id="" class="loading-div hidden">
             <h2 class="breed-name">Your search result will display here</h2>
-        <div class="loading-div">
             <img class="loading-image" src="https://woobro.design/thumbnails/30/page-not-found-404-error-vector-illustration-5de1881dd11bc.png" alt="Searching detective and dog">
         </div>
+        
+        <main class="hidden">
             <article>
                 <img class="dog-pics dog-pic-1" src="https://i.ytimg.com/vi/BkD2nN5275c/maxresdefault.jpg" alt="Dog picture 1">
                 <img class="dog-pics dog-pic-2" src="https://i.insider.com/5b22bda45e48ec22008b46b5?width=1200&format=jpeg&auto=webp" alt="Dog picture 2">

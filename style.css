@@ -1,19 +1,54 @@
+:root {
+    --font-weight-title: 700;
+    --font-weight-headings: 600;
+    --font-weight-text: 400;
+
+    --font-size-title: 2rem;
+    --font-size-headings: 1.8rem;
+    --font-size-text: 0.9rem;
+
+    --purple: hsl(263,60%,48%);
+    --light-purple: hsl(239,53%,59%);
+    --light-blue: hsl(213,64%,59%);
+}
+
+html {
+    box-sizing: border-box;
+}
+
 body {
     margin: auto;
+    font-family: 'Poppins', sans-serif;
+    cursor: url(https://img.icons8.com/ultraviolet/40/000000/dog-bone.png), auto;
 }
+
+/* h1 {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-title);
+} */
 
 h2 {
     padding: 1rem;
+    color: var(--light-purple);
 }
 
 h3 {
     padding-left: 2rem;
     padding-right: 2rem;
+    color: var(--light-blue);
+}
+
+h2, h3 {
+    font-size: var(--font-size-headings);
+    font-weight: var(--font-weight-headings);
+    text-align: center;
 }
 
 p {
     padding-left: 2rem;
     padding-right: 2rem;
+    font-size: var(--font-size-text);
+    font-weight: var(--font-weight-text);
 }
 
 /* ----- Search Result Display ----- */
@@ -21,13 +56,14 @@ article {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
-    justify-items: center;    
+    justify-items: center;
 }
 
 /* whilst searching */
 .loading-div {
     text-align: center;
 }
+
 .loading-image {
     width: 80vw;
     margin: auto;
@@ -37,9 +73,11 @@ article {
 .dog-pic-2 {
     order: 1;
 }
+
 .dog-pic-3 {
     order: 3;
 }
+
 .dog-pic-4 {
     order: 5;
 }
@@ -49,8 +87,9 @@ article {
 }
 
 .temperament {
-    order: 2;    
+    order: 2;
 }
+
 .typical-characteristics {
     order: 4;
 }
@@ -58,18 +97,95 @@ article {
 .dog-pics {
     width: 95vw;
 }
+
 .characteristics {
     display: inline;
 }
-.characteristics b{
+
+.characteristics b {
     text-transform: capitalize;
 }
 
+/* Doogle heading & search area */
+header, form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+form {
+    margin-bottom: 50px;
+}
+
+/* Doogle logo */
+.doogle-logo {
+    width: 250px;
+    cursor: pointer;
+}
+
+/* Doogle icon */
+
+.doogle-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+}     
+
+/* Search input */
+input {
+    border: 2px solid hsl(226, 2%, 92%);
+    border-radius: 6px;
+    height: 50px;
+    padding-left: 5px;
+    font-size: var(--font-size-text);
+}
+
+/* Submit button */
+button {
+    font-weight: var(--font-weight-headings);
+    height: 50px;
+    box-shadow: inset 0px 0px 0px 0px #ffffff;
+    background: hsl(226, 61%, 63%);
+    border-radius: 6px;
+    border: 1px solid hsl(226, 1%, 94%);
+    display: inline-block;
+    color: hsl(226, 0%, 100%);
+    font-size: var(--font-size-text);
+    padding: 6px 24px;
+    margin-top: 5px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+    outline: none;
+
+}
+button:hover {
+    background-color: hsl(226, 72%, 59%);
+}
+button:active {
+    position: relative;
+    top: 4px;
+}
+
+
+/* HR line */
+
+hr {
+    background-color: #EEF0F5;
+    height: 1px;
+}
+
+.hidden {
+    display: none;
+}
+
 @media only screen and (min-width: 600px) {
+
     /* ----- Search Result Display ----- */
     body {
         max-width: 1024px;
-    }    
+    }
+
     article {
         grid-template-columns: 1fr 2rem 2rem 1fr;
     }
@@ -80,19 +196,23 @@ article {
     }
 
     /* when result arrives */
-    .dog-pics{
+    .dog-pics {
         width: 100%;
         order: 0;
     }
+
     .dog-pic-1 {
         grid-column: 1/4;
     }
+
     .dog-pic-2 {
         grid-column: 4/5;
     }
+
     .dog-pic-3 {
         grid-column: 1/2;
     }
+
     .dog-pic-4 {
         grid-column: 2/5;
     }
@@ -100,10 +220,29 @@ article {
     .description {
         grid-column: 1/5;
     }
+
     .temperament {
         grid-column: 1/3;
     }
+
     .typical-characteristics {
         grid-column: 3/5;
     }
+
+    form {
+        flex-direction: row;
+    }
+
+    button {
+        margin-left: 10px;
+        margin-top: 0;
+    }
+
+    :root {
+        --font-size-title: 3.7rem;
+        --font-size-headings: 2.2em;
+        --font-size-text: 1.1rem;
+    }
+
 }
+
