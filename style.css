@@ -126,10 +126,20 @@ article {
     }
 }
 
-/* Doogle Heading */
-h1 {
-    text-align: center;
+/* Doogle heading & search area */
+header, form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+ 
+/* Doogle icon */
+
+.doogle-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}   
 
 /* Search input */
 input {
@@ -137,7 +147,7 @@ input {
     border-radius: 6px;
     height: 50px;
     padding-left: 5px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 /* Submit button */
@@ -157,12 +167,18 @@ button {
     text-shadow: 0px 1px 0px #ffffff;
     outline: none;
 }
-
 button:hover {
     background-color: hsl(226, 72%, 59%);
 }
-
 button:active {
     position: relative;
     top: 1px;
+}
+
+
+/* HR line */
+
+hr {
+    background-color: #EEF0F5;
+    height: 1px;
 }
