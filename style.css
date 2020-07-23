@@ -1,9 +1,26 @@
+:root {
+    --font-weight-title: 700;
+    --font-weight-headings: 600;
+    --font-weight-text: 400;
+
+    --font-size-title: 2rem;
+    --font-size-headings: 1.8rem;
+    --font-size-text: 0.9rem;
+}
+
+
 html {
     box-sizing: border-box;
 }
 
 body {
     margin: auto;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-title);
 }
 
 h2 {
@@ -15,9 +32,17 @@ h3 {
     padding-right: 2rem;
 }
 
+h2, h3 {
+    font-size: var(--font-size-headings);
+    font-weight: var(--font-weight-headings);
+    text-align: center;
+}
+
 p {
     padding-left: 2rem;
     padding-right: 2rem;
+    font-size: var(--font-size-text);
+    font-weight: var(--font-weight-text);
 }
 
 /* ----- Search Result Display ----- */
@@ -75,6 +100,74 @@ article {
     text-transform: capitalize;
 }
 
+/* Doogle heading & search area */
+header, form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+form {
+    margin-bottom: 50px;
+}
+
+/* Doogle logo */
+.doogle-logo {
+    width: 250px;
+    cursor: pointer;
+}
+
+/* Doogle icon */
+
+.doogle-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    cursor: pointer;
+}     
+
+/* Search input */
+input {
+    border: 2px solid hsl(226, 2%, 92%);
+    border-radius: 6px;
+    height: 50px;
+    padding-left: 5px;
+    font-size: var(--font-size-text);
+}
+
+/* Submit button */
+button {
+    height: 50px;
+    box-shadow: inset 0px 0px 0px 0px #ffffff;
+    background: hsl(226, 61%, 63%);
+    border-radius: 6px;
+    border: 1px solid hsl(226, 1%, 94%);
+    display: inline-block;
+    cursor: pointer;
+    color: hsl(226, 0%, 100%);
+    font-size: var(--font-size-text);
+    padding: 6px 24px;
+    margin-top: 5px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+    outline: none;
+
+}
+button:hover {
+    background-color: hsl(226, 72%, 59%);
+}
+button:active {
+    position: relative;
+    top: 1px;
+}
+
+/* HR line */
+
+hr {
+    background-color: #EEF0F5;
+    height: 1px;
+}
+
 @media only screen and (min-width: 600px) {
 
     /* ----- Search Result Display ----- */
@@ -124,61 +217,21 @@ article {
     .typical-characteristics {
         grid-column: 3/5;
     }
+
+    form {
+        flex-direction: row;
+    }
+
+    button {
+        margin-left: 10px;
+        margin-top: 0;
+    }
+
+    :root {
+        --font-size-title: 3.7rem;
+        --font-size-headings: 2.2em;
+        --font-size-text: 1.1rem;
+    }
+
 }
 
-/* Doogle heading & search area */
-header, form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
- 
-/* Doogle icon */
-
-.doogle-icon {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-}   
-
-/* Search input */
-input {
-    border: 2px solid hsl(226, 2%, 92%);
-    border-radius: 6px;
-    height: 50px;
-    padding-left: 5px;
-    font-size: 20px;
-}
-
-/* Submit button */
-button {
-    height: 50px;
-    box-shadow: inset 0px 0px 0px 0px #ffffff;
-    background: hsl(226, 61%, 63%);
-    border-radius: 6px;
-    border: 1px solid hsl(226, 1%, 94%);
-    display: inline-block;
-    cursor: pointer;
-    color: hsl(226, 0%, 100%);
-    font-family: Arial;
-    font-size: 15px;
-    padding: 6px 24px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #ffffff;
-    outline: none;
-}
-button:hover {
-    background-color: hsl(226, 72%, 59%);
-}
-button:active {
-    position: relative;
-    top: 1px;
-}
-
-
-/* HR line */
-
-hr {
-    background-color: #EEF0F5;
-    height: 1px;
-}

@@ -84,4 +84,14 @@ form.addEventListener('submit', e => {
 });
 
 
+// Page reload on Doogle_logo click
 
+var logo = document.querySelector('.doogle-logo');
+var icon = document.querySelector('.doogle-icon');
+
+logo.addEventListener("click", function(){
+    window.location.reload(false);
+});
+icon.addEventListener("click", function(){
+    window.location.reload(false);
+});
