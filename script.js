@@ -42,10 +42,12 @@ form.addEventListener('submit', e => {
     // const formData = new formData(e.target);
     // const name = formData.get("doogle");
 
-    let breed = inputTxt.value;
+    let breed = inputTxt.value.trim();
+    console.log(breed);
     let breed_id;
+    let dogAPIobject = {};
 
-    // request
+    // request for dog API
     fetch(`https://api.thedogapi.com/v1/breeds/search?q=${breed}`)
 
         .then(response => {
@@ -53,25 +55,33 @@ form.addEventListener('submit', e => {
             return response.json();
         })
 
-    // successful response    
+    // json response    
         .then(jsonBreed => {
-            console.log(jsonBreed)
-            breed_id = jsonBreed[0].id
+            console.log(jsonBreed);
+            breed_id = jsonBreed[0].id;
             console.log(breed_id);
-
-        fetch(`https://api.thedogapi.com/v1/images/search?breed_id=${breed_id}`)   
-        .then(imageJSON => imageJSON.json())
-        .then(pictureUrl => console.log(pictureUrl[0].url))
-        .catch( ()=> console.error('WRONG BREED ID'))
+            dogAPIobject.name = jsonBreed[0].name;
+            dogAPIobject["bred for"] = jsonBreed[0].bred_for;
+            dogAPIobject["life span"] = jsonBreed[0].life_span;
+            dogAPIobject.temperament = jsonBreed[0].temperament;
+            return breed_id;
         })
-
+    //  
+        .then(id => {
+            fetch(`https://api.thedogapi.com/v1/images/search?breed_id=${id}`)   
+            .then(imageJSON => imageJSON.json())
+            .then(dogAPI => {
+                console.log(dogAPI[0].url);
+                dogAPIobject.image = dogAPI[0].url;   
+            })
+            .catch( ()=> console.error('WRONG BREED ID'))
+        })
     // unsuccessful response
         .catch( ()=> console.error('WRONG INPUT! ENTER VALID DOG BREED'))
 
-
-    
-
-
-
+        console.log(dogAPIobject);
+        
 });
+
+
 
