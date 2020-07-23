@@ -14,18 +14,13 @@
 
 html {
     box-sizing: border-box;
+    cursor: url(https://img.icons8.com/ultraviolet/40/000000/dog-bone.png), auto;
 }
 
 body {
     margin: auto;
     font-family: 'Poppins', sans-serif;
-    cursor: url(https://img.icons8.com/ultraviolet/40/000000/dog-bone.png), auto;
 }
-
-/* h1 {
-    font-size: 3.5rem;
-    font-weight: var(--font-weight-title);
-} */
 
 h2 {
     padding: 1rem;
@@ -129,7 +124,7 @@ form {
     position: absolute;
     left: 10px;
     top: 10px;
-    cursor: pointer;
+    cursor: url(https://img.icons8.com/pastel-glyph/64/000000/dog-muzzle.png), auto;
 }     
 
 /* Search input */
@@ -157,11 +152,30 @@ button {
     text-decoration: none;
     text-shadow: 0px 1px 0px #ffffff;
     outline: none;
+    cursor: url(https://img.icons8.com/ultraviolet/40/000000/dog-bone.png), auto;
 
 }
 button:hover {
     background-color: hsl(226, 72%, 59%);
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0,0,0);
+    perspective: 1000px;
 }
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px,0,0);
+    }
+    20%, 80% {
+        transform: translate3d(2px,0,0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-2px,0,0);
+    }
+    40%, 60% {
+        transform: translate3d(2px,0,0);
+    }
+}
+
 button:active {
     position: relative;
     top: 4px;
