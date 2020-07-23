@@ -1,9 +1,21 @@
+:root {
+    --font-weight-title: 900;
+    --font-weight-headings: 600;
+    --font-weight-text: 400;
+}
+
+
 html {
     box-sizing: border-box;
 }
 
 body {
     margin: auto;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1 {
+    font-size: 3em;
 }
 
 h2 {
@@ -75,6 +87,66 @@ article {
     text-transform: capitalize;
 }
 
+/* Doogle heading & search area */
+header, form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+ 
+/* Doogle icon */
+
+.doogle-icon {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}   
+
+/* Search input */
+input {
+    border: 2px solid hsl(226, 2%, 92%);
+    border-radius: 6px;
+    height: 50px;
+    padding-left: 5px;
+    font-size: 20px;
+}
+
+/* Submit button */
+button {
+    height: 50px;
+    box-shadow: inset 0px 0px 0px 0px #ffffff;
+    background: hsl(226, 61%, 63%);
+    border-radius: 6px;
+    border: 1px solid hsl(226, 1%, 94%);
+    display: inline-block;
+    cursor: pointer;
+    color: hsl(226, 0%, 100%);
+    font-family: Arial;
+    font-size: 15px;
+    padding: 6px 24px;
+    margin-top: 5px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+    outline: none;
+
+}
+button:hover {
+    background-color: hsl(226, 72%, 59%);
+}
+button:active {
+    position: relative;
+    top: 1px;
+}
+
+
+/* HR line */
+
+hr {
+    background-color: #EEF0F5;
+    height: 1px;
+}
+
 @media only screen and (min-width: 600px) {
 
     /* ----- Search Result Display ----- */
@@ -124,61 +196,13 @@ article {
     .typical-characteristics {
         grid-column: 3/5;
     }
-}
 
-/* Doogle heading & search area */
-header, form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
- 
-/* Doogle icon */
+    form {
+        flex-direction: row;
+    }
 
-.doogle-icon {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-}   
-
-/* Search input */
-input {
-    border: 2px solid hsl(226, 2%, 92%);
-    border-radius: 6px;
-    height: 50px;
-    padding-left: 5px;
-    font-size: 20px;
-}
-
-/* Submit button */
-button {
-    height: 50px;
-    box-shadow: inset 0px 0px 0px 0px #ffffff;
-    background: hsl(226, 61%, 63%);
-    border-radius: 6px;
-    border: 1px solid hsl(226, 1%, 94%);
-    display: inline-block;
-    cursor: pointer;
-    color: hsl(226, 0%, 100%);
-    font-family: Arial;
-    font-size: 15px;
-    padding: 6px 24px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #ffffff;
-    outline: none;
-}
-button:hover {
-    background-color: hsl(226, 72%, 59%);
-}
-button:active {
-    position: relative;
-    top: 1px;
-}
-
-
-/* HR line */
-
-hr {
-    background-color: #EEF0F5;
-    height: 1px;
+    button {
+        margin-left: 10px;
+        margin-top: 0;
+    }
 }
