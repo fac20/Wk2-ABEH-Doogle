@@ -108,14 +108,13 @@ header, form{
     justify-content: center;
     flex-direction: column;
 }
-form {
-    margin-bottom: 50px;
-}
 
 /* Doogle logo */
 .doogle-logo {
     width: 250px;
     cursor: pointer;
+    padding-top: 150px;
+    padding-bottom: 0;
 }
 
 /* Doogle icon */
