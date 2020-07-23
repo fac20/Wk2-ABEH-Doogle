@@ -32,7 +32,15 @@ const arrayOfBreeds = ["Affenpinscher", "Afghan Hound", "African Hunting Dog", "
                         "Welsh Springer Spaniel", "West Highland White Terrier", "Whippet", "White Shepherd", "Wire Fox Terrier", "Wirehaired Pointing Griffon",
                         "Wirehaired Vizsla", "Xoloitzcuintli", "Yorkshire Terrier"];
 
+const loadingPage = document.querySelector(".loading-div");
+const header = document.querySelector("header");
+const seperator = document.querySelector("hr");
 
+const loading = () => {
+    loadingPage.classList.toggle("hidden");
+    header.classList.toggle("hidden");
+    form.classList.toggle("hidden");
+}
 
 form.addEventListener('submit', e => {
     // stop the form submitting & reloading the page
@@ -41,6 +49,8 @@ form.addEventListener('submit', e => {
     // get the value of the field w/ name="doogle"
     // const formData = new formData(e.target);
     // const name = formData.get("doogle");
+
+    loading();
 
     let breed = inputTxt.value.trim();
     console.log(breed);
@@ -72,7 +82,8 @@ form.addEventListener('submit', e => {
             .then(imageJSON => imageJSON.json())
             .then(dogAPI => {
                 console.log(dogAPI[0].url);
-                dogAPIobject.image = dogAPI[0].url;   
+                dogAPIobject.image = dogAPI[0].url;  
+                loading(); 
             })
             .catch( ()=> console.error('WRONG BREED ID'))
         })
