@@ -1,6 +1,7 @@
 var inputTxt = document.getElementById('inputText');
 var fetchBtn = document.getElementById('fetchBtn');
 var form = document.querySelector('form');
+var article = document.querySelector('article');
 
 const arrayOfBreeds = ["Affenpinscher", "Afghan Hound", "African Hunting Dog", "Airedale Terrier", "Akbash Dog",
                        "Akita", "Alapaha Blue Blood Bulldog", "Alaskan Husky", "Alaskan Malamute", "American Bulldog", 
@@ -37,10 +38,14 @@ const header = document.querySelector("header");
 const seperator = document.querySelector("hr");
 
 const loading = () => {
+    article.innerHTML = "";
     loadingPage.classList.toggle("hidden");
     header.classList.toggle("hidden");
     form.classList.toggle("hidden");
+    seperator.classList.add("hidden");
 }
+
+let dogAPIobject = {};
 
 form.addEventListener('submit', e => {
     // stop the form submitting & reloading the page
@@ -55,7 +60,7 @@ form.addEventListener('submit', e => {
     let breed = inputTxt.value.trim();
     console.log(breed);
     let breed_id;
-    let dogAPIobject = {};
+    
 
     // request for dog API
     fetch(`https://api.thedogapi.com/v1/breeds/search?q=${breed}`)
@@ -69,7 +74,6 @@ form.addEventListener('submit', e => {
         .then(jsonBreed => {
             console.log(jsonBreed);
             breed_id = jsonBreed[0].id;
-            console.log(breed_id);
             dogAPIobject.name = jsonBreed[0].name;
             dogAPIobject["bred for"] = jsonBreed[0].bred_for;
             dogAPIobject["life span"] = jsonBreed[0].life_span;
@@ -81,19 +85,23 @@ form.addEventListener('submit', e => {
             fetch(`https://api.thedogapi.com/v1/images/search?breed_id=${id}`)   
             .then(imageJSON => imageJSON.json())
             .then(dogAPI => {
-                console.log(dogAPI[0].url);
                 dogAPIobject.image = dogAPI[0].url;  
-                loading(); 
+                loading();
             })
-            .catch( ()=> console.error('WRONG BREED ID'))
+        .then( () => appendData(dogAPIobject) )
+        .catch( ()=> console.error('WRONG BREED ID'))
         })
     // unsuccessful response
-        .catch( ()=> console.error('WRONG INPUT! ENTER VALID DOG BREED'))
+        .catch( ()=> {
+            
+            console.error('WRONG INPUT! ENTER VALID DOG BREED')
+            searchError();
+            resetButton();
+        })
 
         console.log(dogAPIobject);
         
 });
-
 
 // Page reload on Doogle_logo click
 
@@ -106,3 +114,63 @@ logo.addEventListener("click", function(){
 icon.addEventListener("click", function(){
     window.location.reload(false);
 });
+
+const appendData = (dogObject) => {
+    
+
+    var img = document.createElement("img");
+    img.setAttribute("src", dogObject.image);
+    img.classList.add("dog-pics");
+    article.appendChild(img);
+
+    var div = document.createElement("div");
+    div.innerHTML = `<h3>Temperament</h3>
+    <p>${dogObject.temperament}</p>`;
+    div.classList.add("dog-picbreed-info");
+    div.classList.add("temperament");
+    article.appendChild(div);
+
+    var div = document.createElement("div");
+    div.innerHTML = `<h3>Life span</h3>
+    <p>${dogObject["life span"]}</p>`;
+    div.classList.add("dog-picbreed-info");
+    div.classList.add("typical-characteristics");
+    article.appendChild(div);
+
+    var div = document.createElement("div");
+    div.innerHTML = `<h3>Mission</h3>
+    <p>${dogObject["bred for"]}</p>`;
+    div.classList.add("dog-picbreed-info");
+    div.classList.add("typical-characteristics");
+    article.appendChild(div);
+
+    seperator.classList.remove("hidden");
+}
+
+const searchError = () => {
+    let errorPicture = document.createElement("img");
+    errorPicture.setAttribute("src", "images/error-404.png");
+    errorPicture.classList.add("dog-pics");
+    article.appendChild(errorPicture);
+    loadingPage.classList.add("hidden");
+}
+
+
+const resetButton = () => {
+    let resetButton = document.createElement("button");
+    resetButton.innerHTML = "Try again!";
+    article.appendChild(resetButton);
+
+    resetButton.addEventListener("click", () => {
+            article.innerHTML = "";
+            header.classList.toggle("hidden");
+            form.classList.toggle("hidden");
+    })
+}
+
+
+
+
+
+
+
