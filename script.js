@@ -185,19 +185,19 @@ const appendData = (dogObject) => {
     div.classList.add("temperament");
     article.appendChild(div);
 
-    let div = document.createElement("div");
-    div.innerHTML = `<h3>Life span</h3>
+    let div2 = document.createElement("div");
+    div2.innerHTML = `<h3>Life span</h3>
     <p>${dogObject["life span"]}</p>`;
-    div.classList.add("dog-picbreed-info");
-    div.classList.add("typical-characteristics");
-    article.appendChild(div);
+    div2.classList.add("dog-picbreed-info");
+    div2.classList.add("typical-characteristics");
+    article.appendChild(div2);
 
-    let div = document.createElement("div");
-    div.innerHTML = `<h3>Mission</h3>
+    let div3 = document.createElement("div");
+    div3.innerHTML = `<h3>Mission</h3>
     <p>${dogObject["bred for"]}</p>`;
-    div.classList.add("dog-picbreed-info");
-    div.classList.add("typical-characteristics");
-    article.appendChild(div);
+    div3.classList.add("dog-picbreed-info");
+    div3.classList.add("typical-characteristics");
+    article.appendChild(div3);
 
     seperator.classList.remove("hidden");
 }
