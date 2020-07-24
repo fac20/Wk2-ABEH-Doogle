@@ -1,5 +1,5 @@
 # Doogle :dog2:
-[Doogle](https://fairyaksh.github.io/Doogle/) ...... *THE* paw-ty app of 2020.
+[Doogle](https://fac20.github.io/Wk2-ABEH-Doogle/) ...... *THE* paw-ty app of 2020.
 
 ## Table of contents
 
