@@ -121,8 +121,9 @@ header, form{
 
 .doogle-icon {
     position: absolute;
-    left: 20vw;
-    top: 20vw;
+    left: 2vw;
+    top: 3vw;
+    width: 40px;
     cursor: url(https://img.icons8.com/pastel-glyph/64/000000/dog-muzzle.png), auto;
 }     
 
