@@ -111,9 +111,9 @@ header, form{
 
 /* Doogle logo */
 .doogle-logo {
-    width: 250px;
+    max-width: 250px;
     cursor: pointer;
-    padding-top: 150px;
+    padding-top: 15vw;
     padding-bottom: 0;
 }
 
@@ -121,8 +121,8 @@ header, form{
 
 .doogle-icon {
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 20vw;
+    top: 20vw;
     cursor: url(https://img.icons8.com/pastel-glyph/64/000000/dog-muzzle.png), auto;
 }     
 
@@ -130,7 +130,7 @@ header, form{
 input {
     border: 2px solid hsl(226, 2%, 92%);
     border-radius: 6px;
-    height: 50px;
+    height: 2rem;
     padding-left: 5px;
     font-size: var(--font-size-text);
 }
@@ -138,7 +138,7 @@ input {
 /* Submit button */
 button {
     font-weight: var(--font-weight-headings);
-    height: 50px;
+    height: 2rem;
     box-shadow: inset 0px 0px 0px 0px #ffffff;
     background: hsl(226, 61%, 63%);
     border-radius: 6px;
