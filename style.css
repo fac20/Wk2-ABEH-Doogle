@@ -6,11 +6,15 @@
     --font-size-title: 2rem;
     --font-size-headings: 1.8rem;
     --font-size-text: 0.9rem;
-}
 
+    --purple: hsl(263,60%,48%);
+    --light-purple: hsl(239,53%,59%);
+    --light-blue: hsl(213,64%,59%);
+}
 
 html {
     box-sizing: border-box;
+    cursor: url(https://img.icons8.com/ultraviolet/40/000000/dog-bone.png), auto;
 }
 
 body {
@@ -18,18 +22,15 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-h1 {
-    font-size: 3.5rem;
-    font-weight: var(--font-weight-title);
-}
-
 h2 {
     padding: 1rem;
+    color: var(--light-purple);
 }
 
 h3 {
     padding-left: 2rem;
     padding-right: 2rem;
+    color: var(--light-blue);
 }
 
 h2, h3 {
@@ -107,14 +108,13 @@ header, form{
     justify-content: center;
     flex-direction: column;
 }
-form {
-    margin-bottom: 50px;
-}
 
 /* Doogle logo */
 .doogle-logo {
     width: 250px;
     cursor: pointer;
+    padding-top: 150px;
+    padding-bottom: 0;
 }
 
 /* Doogle icon */
@@ -123,7 +123,7 @@ form {
     position: absolute;
     left: 10px;
     top: 10px;
-    cursor: pointer;
+    cursor: url(https://img.icons8.com/pastel-glyph/64/000000/dog-muzzle.png), auto;
 }     
 
 /* Search input */
@@ -137,13 +137,13 @@ input {
 
 /* Submit button */
 button {
+    font-weight: var(--font-weight-headings);
     height: 50px;
     box-shadow: inset 0px 0px 0px 0px #ffffff;
     background: hsl(226, 61%, 63%);
     border-radius: 6px;
     border: 1px solid hsl(226, 1%, 94%);
     display: inline-block;
-    cursor: pointer;
     color: hsl(226, 0%, 100%);
     font-size: var(--font-size-text);
     padding: 6px 24px;
@@ -151,15 +151,35 @@ button {
     text-decoration: none;
     text-shadow: 0px 1px 0px #ffffff;
     outline: none;
+    cursor: url(https://img.icons8.com/ultraviolet/40/000000/dog-bone.png), auto;
 
 }
 button:hover {
     background-color: hsl(226, 72%, 59%);
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0,0,0);
+    perspective: 1000px;
 }
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px,0,0);
+    }
+    20%, 80% {
+        transform: translate3d(2px,0,0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-2px,0,0);
+    }
+    40%, 60% {
+        transform: translate3d(2px,0,0);
+    }
+}
+
 button:active {
     position: relative;
-    top: 1px;
+    top: 4px;
 }
+
 
 /* HR line */
 

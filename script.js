@@ -4,7 +4,7 @@ var form = document.querySelector('form');
 var article = document.querySelector('article');
 
 const arrayOfBreeds = ["Affenpinscher", "Afghan Hound", "African Hunting Dog", "Airedale Terrier", "Akbash Dog",
-                       "Akita", "Alapaha Blue Blood Bulldog", "Alaskan Husky", "Alaskan Malamute", "American Bulldog", 
+                        "Akita", "Alapaha Blue Blood Bulldog", "Alaskan Husky", "Alaskan Malamute", "American Bulldog", 
                         "American Bully", "American Eskimo Dog", "American Eskimo Dog (Miniature)", "American Foxhound", 
                         "American Pit Bull Terrier", "American Staffordshire Terrier", "American Water Spaniel", "Anatolian Shepherd Dog",
                         "Appenzeller Sennenhund", "Australian Cattle Dog", "Australian Kelpie", "Australian Shepherd", 
@@ -58,11 +58,11 @@ form.addEventListener('submit', e => {
     loading();
 
     let breed = inputTxt.value.trim();
-    console.log(breed);
+    console.log('breed:', breed);
     let breed_id;
     
 
-    // request for dog API
+    /*----- Request for dog API -----*/
     fetch(`https://api.thedogapi.com/v1/breeds/search?q=${breed}`)
 
         .then(response => {
@@ -72,8 +72,12 @@ form.addEventListener('submit', e => {
 
     // json response    
         .then(jsonBreed => {
-            console.log(jsonBreed);
+            console.log('jsonBreed:', jsonBreed);
             breed_id = jsonBreed[0].id;
+
+
+            console.log('breed id:', breed_id);
+
             dogAPIobject.name = jsonBreed[0].name;
             dogAPIobject["bred for"] = jsonBreed[0].bred_for;
             dogAPIobject["life span"] = jsonBreed[0].life_span;
@@ -85,6 +89,8 @@ form.addEventListener('submit', e => {
             fetch(`https://api.thedogapi.com/v1/images/search?breed_id=${id}`)   
             .then(imageJSON => imageJSON.json())
             .then(dogAPI => {
+                console.log('dogs URL:', dogAPI[0].url);
+
                 dogAPIobject.image = dogAPI[0].url;  
                 loading();
             })
@@ -99,8 +105,67 @@ form.addEventListener('submit', e => {
             resetButton();
         })
 
-        console.log(dogAPIobject);
+        console.log('dogAPI object:', dogAPIobject);
         
+    /*----- Request for wikimedia API -----*/
+    // --Images--
+    let url = "https://en.wikipedia.org/w/api.php"; 
+
+    let params = {
+        action: "query",
+        prop: "images",
+        titles: breed, 
+        format: "json"
+    };
+
+    url = url + "?origin=*";
+    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+
+    fetch(url)
+        .then (response => {
+            if (!response.ok) throw new Error(response.status);
+            return response.json();
+        })    
+        .then(json => { 
+            console.log('wiki object with image:', json)
+            const breedImages = Object.values(json.query.pages)[0].images
+            console.log("breedImages:", breedImages);
+            console.log('First search result:', breedImages)
+        })
+        // unsuccessful response
+        .catch(()=> console.error('BREED IMAGE NOT FOUND ON WIKIMEDIA'));
+
+    // --Text--
+    let url_2 = "https://en.wikipedia.org/w/api.php"; 
+
+    let params_2 = {
+        action: "query",
+        prop: "revisions",
+        titles: breed,
+        rvprop: "content",
+        rvslots: "main",
+        formatversion: "2",
+        format: "json"
+    };
+
+    url_2 = url_2 + "?origin=*";
+    Object.keys(params_2).forEach(function(key){url_2 += "&" + key + "=" + params_2[key];});
+    console.log('URL 2:', url_2);
+
+    fetch(url_2)
+        .then (response => {
+            if (!response.ok) throw new Error(response.status);
+            return response.json();
+        })    
+        .then(json => { 
+            console.log('wiki object with text:', json)
+            const breedText = json.query.pages[0].revisions[0].slots.main.content;
+            console.log('Text of search result:', breedText)
+        })
+
+        // unsuccessful response
+        .catch(()=> console.error('BREED TEXT NOT FOUND ON WIKIMEDIA'));
+
 });
 
 // Page reload on Doogle_logo click
