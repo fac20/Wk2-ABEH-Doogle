@@ -1,8 +1,8 @@
-var inputTxt = document.getElementById('inputText');
-var fetchBtn = document.getElementById('fetchBtn');
-var form = document.querySelector('form');
-var article = document.querySelector('article');
-var main = document.querySelector('main');
+const inputTxt = document.getElementById('inputText');
+const fetchBtn = document.getElementById('fetchBtn');
+const form = document.querySelector('form');
+const article = document.querySelector('article');
+const main = document.querySelector('main');
 
 const arrayOfBreeds = ["Affenpinscher", "Afghan Hound", "African Hunting Dog", "Airedale Terrier", "Akbash Dog",
                         "Akita", "Alapaha Blue Blood Bulldog", "Alaskan Husky", "Alaskan Malamute", "American Bulldog", 
@@ -53,13 +53,10 @@ form.addEventListener('submit', e => {
     e.preventDefault();
 
     // get the value of the field w/ name="doogle"
-    // const formData = new formData(e.target);
-    // const name = formData.get("doogle");
 
     loading();
 
     let breed = inputTxt.value.trim();
-    console.log('breed:', breed);
     let breed_id;
     
 
@@ -73,11 +70,7 @@ form.addEventListener('submit', e => {
 
     // json response    
         .then(jsonBreed => {
-            console.log('jsonBreed:', jsonBreed);
             breed_id = jsonBreed[0].id;
-
-
-            console.log('breed id:', breed_id);
 
             dogAPIobject.name = jsonBreed[0].name;
             dogAPIobject["bred for"] = jsonBreed[0].bred_for;
@@ -85,7 +78,7 @@ form.addEventListener('submit', e => {
             dogAPIobject.temperament = jsonBreed[0].temperament;
             return breed_id;
         })
-    //  
+
         .then(id => {
             fetch(`https://api.thedogapi.com/v1/images/search?breed_id=${id}`)   
             .then(imageJSON => imageJSON.json())
@@ -105,8 +98,6 @@ form.addEventListener('submit', e => {
             searchError();
             resetButton();
         })
-
-        console.log('dogAPI object:', dogAPIobject);
         
     /*----- Request for wikimedia API -----*/
     // --Images--
@@ -151,7 +142,6 @@ form.addEventListener('submit', e => {
 
     url_2 = url_2 + "?origin=*";
     Object.keys(params_2).forEach(function(key){url_2 += "&" + key + "=" + params_2[key];});
-    console.log('URL 2:', url_2);
 
     fetch(url_2)
         .then (response => {
@@ -171,8 +161,8 @@ form.addEventListener('submit', e => {
 
 // Page reload on Doogle_logo click
 
-var logo = document.querySelector('.doogle-logo');
-var icon = document.querySelector('.doogle-icon');
+const logo = document.querySelector('.doogle-logo');
+const icon = document.querySelector('.doogle-icon');
 
 logo.addEventListener("click", function(){
     window.location.reload(false);
@@ -186,31 +176,31 @@ const appendData = (dogObject) => {
     dogBreedHeading.textContent = dogObject.name
     main.insertBefore(dogBreedHeading, article);
 
-    var img = document.createElement("img");
+    let img = document.createElement("img");
     img.setAttribute("src", dogObject.image);
     img.classList.add("dog-pics");
     article.appendChild(img);
 
-    var div = document.createElement("div");
+    let div = document.createElement("div");
     div.innerHTML = `<h3>Temperament</h3>
     <p>${dogObject.temperament}</p>`;
     div.classList.add("dog-picbreed-info");
     div.classList.add("temperament");
     article.appendChild(div);
 
-    var div = document.createElement("div");
-    div.innerHTML = `<h3>Life span</h3>
+    let div2 = document.createElement("div");
+    div2.innerHTML = `<h3>Life span</h3>
     <p>${dogObject["life span"]}</p>`;
-    div.classList.add("dog-picbreed-info");
-    div.classList.add("typical-characteristics");
-    article.appendChild(div);
+    div2.classList.add("dog-picbreed-info");
+    div2.classList.add("typical-characteristics");
+    article.appendChild(div2);
 
-    var div = document.createElement("div");
-    div.innerHTML = `<h3>Mission</h3>
+    let div3 = document.createElement("div");
+    div3.innerHTML = `<h3>Mission</h3>
     <p>${dogObject["bred for"]}</p>`;
-    div.classList.add("dog-picbreed-info");
-    div.classList.add("typical-characteristics");
-    article.appendChild(div);
+    div3.classList.add("dog-picbreed-info");
+    div3.classList.add("typical-characteristics");
+    article.appendChild(div3);
 
     seperator.classList.remove("hidden");
 }
