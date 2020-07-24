@@ -2,6 +2,7 @@ const inputTxt = document.getElementById('inputText');
 const fetchBtn = document.getElementById('fetchBtn');
 const form = document.querySelector('form');
 const article = document.querySelector('article');
+const main = document.querySelector('main');
 
 const arrayOfBreeds = ["Affenpinscher", "Afghan Hound", "African Hunting Dog", "Airedale Terrier", "Akbash Dog",
                         "Akita", "Alapaha Blue Blood Bulldog", "Alaskan Husky", "Alaskan Malamute", "American Bulldog", 
@@ -171,7 +172,9 @@ icon.addEventListener("click", function(){
 });
 
 const appendData = (dogObject) => {
-    
+    const dogBreedHeading = document.createElement("h2")
+    dogBreedHeading.textContent = dogObject.name
+    main.insertBefore(dogBreedHeading, article);
 
     let img = document.createElement("img");
     img.setAttribute("src", dogObject.image);
