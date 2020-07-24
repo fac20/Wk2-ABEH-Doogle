@@ -58,7 +58,6 @@ form.addEventListener('submit', e => {
     loading();
 
     let breed = inputTxt.value.trim();
-    console.log('breed:', breed);
     let breed_id;
     
 
@@ -72,11 +71,7 @@ form.addEventListener('submit', e => {
 
     // json response    
         .then(jsonBreed => {
-            console.log('jsonBreed:', jsonBreed);
             breed_id = jsonBreed[0].id;
-
-
-            console.log('breed id:', breed_id);
 
             dogAPIobject.name = jsonBreed[0].name;
             dogAPIobject["bred for"] = jsonBreed[0].bred_for;
@@ -104,8 +99,6 @@ form.addEventListener('submit', e => {
             searchError();
             resetButton();
         })
-
-        console.log('dogAPI object:', dogAPIobject);
         
     /*----- Request for wikimedia API -----*/
     // --Images--
@@ -150,7 +143,6 @@ form.addEventListener('submit', e => {
 
     url_2 = url_2 + "?origin=*";
     Object.keys(params_2).forEach(function(key){url_2 += "&" + key + "=" + params_2[key];});
-    console.log('URL 2:', url_2);
 
     fetch(url_2)
         .then (response => {
